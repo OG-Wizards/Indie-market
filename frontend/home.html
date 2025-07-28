@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indie Market – Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow p-4 flex justify-between">
+    <div class="text-xl font-bold"><a href="home.html">Indie Market</a></div>
+    <div class="space-x-4">
+      <a href="products.html" class="hover:underline">Products</a>
+      <a href="signup.html" id="signupLink" class="hover:underline">Sign Up</a>
+      <a href="login.html" id="loginLink" class="hover:underline">Login</a>
+      <a href="seller.html" id="sellerLink" class="hover:underline">Seller Dashboard</a>
+      <button id="logoutBtn" class="hover:underline hidden">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="p-10 text-center bg-white shadow-sm">
+    <h1 class="text-3xl font-bold">
+      Discover & Sell <span class="text-blue-600">Handmade</span> Products
+    </h1>
+    <p class="text-gray-600 mt-2">Support indie makers — or become one.</p>
+    <div class="mt-4 space-x-2">
+      <a href="products.html" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Browse Products</a>
+      <a href="seller.html" id="sellerCta" class="border border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-50">Become a Seller</a>
+    </div>
+  </header>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

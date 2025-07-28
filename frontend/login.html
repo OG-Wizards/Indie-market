@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Indie Market</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <main class="max-w-sm mx-auto mt-16 p-6 bg-white rounded-xl shadow">
+    <h1 class="text-2xl font-bold mb-4">Login</h1>
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <label class="block mb-1">Email</label>
+        <input type="email" name="email" class="w-full border p-2 rounded" required />
+      </div>
+      <div>
+        <label class="block mb-1">Password</label>
+        <input type="password" name="password" class="w-full border p-2 rounded" required />
+      </div>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">Login</button>
+    </form>
+    <p id="status" class="mt-3 text-sm"></p>
+    <p class="mt-3 text-sm">Don't have an account? <a href="signup.html" class="text-blue-600 underline">Sign Up</a></p>
+  </main>
+
+  <script type="module">
+    import { postJSON, saveAuth, API_BASE } from './auth.js';
+
+    const form = document.getElementById('loginForm');
+    const statusEl = document.getElementById('status');
+
+    const params = new URLSearchParams(window.location.search);
+    const redirect = params.get("redirect") || "home.html";
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = "";
+
+      const data = {
+        email: form.email.value,
+        password: form.password.value
+      };
+
+      try {
+        const res = await postJSON(`${API_BASE}/auth/login`, data);
+        saveAuth(res);
+        statusEl.style.color = "green";
+        statusEl.textContent = "✅ Logged in! Redirecting...";
+        setTimeout(() => (window.location.href = redirect), 800);
+      } catch (err) {
+        statusEl.style.color = "red";
+        statusEl.textContent = "❌ " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>

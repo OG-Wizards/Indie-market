@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products – Indie Market</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <nav class="bg-white shadow p-4 flex justify-between">
+    <div class="text-xl font-bold"><a href="home.html">Indie Market</a></div>
+    <div class="space-x-4">
+      <a href="home.html" class="hover:underline">Home</a>
+      <a href="products.html" class="hover:underline font-semibold">Products</a>
+      <a href="signup.html" id="signupLink" class="hover:underline">Sign Up</a>
+      <a href="login.html" id="loginLink" class="hover:underline">Login</a>
+      <a href="seller.html" id="sellerLink" class="hover:underline">Seller Dashboard</a>
+      <button id="logoutBtn" class="hover:underline hidden">Logout</button>
+    </div>
+  </nav>
+
+  <main class="p-6">
+    <h1 class="text-3xl font-bold mb-6">Available Products</h1>
+    <div id="productsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

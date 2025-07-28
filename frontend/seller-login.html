@@ -1,0 +1,26 @@
+<script type="module">
+  import { postJSON, saveAuth, API_BASE } from './auth.js';
+
+  const form = document.getElementById('loginForm');
+  const statusEl = document.getElementById('status');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+      const res = await postJSON(`${API_BASE}/auth/login`, {
+        email: form.email.value,
+        password: form.password.value
+      });
+      if (res.role !== 'seller') {
+        statusEl.textContent = "This portal is only for sellers.";
+        statusEl.style.color = "red";
+        return;
+      }
+      saveAuth(res);
+      window.location.href = "seller.html";
+    } catch (err) {
+      statusEl.textContent = "Login failed: " + err.message;
+      statusEl.style.color = "red";
+    }
+  });
+</script>
